@@ -1,0 +1,85 @@
+print("taylor.mac");
+
+/*
+diff_n(fn,n):=(
+
+	print("diff_n");
+	
+);
+
+*/
+
+taylor_2(a,b):=(
+		
+		f:sin(x),
+		
+		/* */
+		print("sin(x)"),
+		
+		/* */
+		
+		f2:diff(f,x),
+		
+		/* */
+		print("a0, differential"),
+		
+		f2,
+		
+		/* */
+		print("a0, x=0"),
+		
+		f2_nomi: subst(0,x,f2),
+		
+		f2_nomi
+		
+);
+
+diff_n(fn,x,n):=(
+
+	print("fn => ", fn),
+
+/*	print("diff_n"),	*/
+	
+/*	for i:1 while i <= 10 do (i: i+1, print(i))		*/
+/*	for i:1 thru 3 step 1 do (print(i), print(i+10), fn: diff(fn,x)),	*/
+/*	for i:1 thru n step 1 do (print(i), print(i+10), fn: diff(fn,x)),	*/
+	for i:1 thru n step 1 do 
+/*		(print(i), fn: diff(fn,x), print ("fn => ", fn, " / ", "fn(0) => ", subst(0,x,fn))),	*/
+		(fn: diff(fn,x)),
+
+	print("fn is now => ", fn),
+
+	fn_new: fn
+	
+/*	print ("fn_new => ", fn_new),	*/
+	
+/*	subst(0,x,fn_new)	*/
+	
+/*	12		=> working	*/
+	
+/*	fn_new	*/
+
+/*	
+	fn2: diff(fn,x),
+	
+	printf("fn is now => ", fn2),
+	
+	fn2
+	
+*/
+);
+
+taylor_nth(fn,x,n):= (
+
+	print("---- taylor_nth() ---"),
+
+	print("[taylor_nth]fn => ", fn),
+
+	fn_new: diff_n(fn,x,n),
+	
+	print("[taylor_nth]fn_new => ", fn_new),
+
+	subst(0,x,fn_new) / factorial(n)
+/*	subst(0,x,diff_n(fn,x,n)) / factorial(n)	*/
+
+);
