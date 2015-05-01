@@ -83,3 +83,78 @@ taylor_nth(fn,x,n):= (
 /*	subst(0,x,diff_n(fn,x,n)) / factorial(n)	*/
 
 );
+
+/************************
+taylor_sum
+************************/
+taylor_sum(fn,x,n, val):=(
+
+	print("taylor_sum"),
+
+	print("fn => ", fn),
+
+	/* a0 */	
+/*
+	a0: subst(0,x,fn),
+	
+	print("a0 => ", a0),
+*/
+
+	print("------ a0 ---------"),
+	
+/*	f0: diff(fn,x),	*/
+	f0: fn,
+	nomi: subst(0,x,f0),
+	denomi: factorial(0),
+	a0: float(nomi/denomi),
+	
+	x0: val,
+	
+	t0: a0*x0,
+
+	print("f0 => ", f0, " / ", "f0(0)(nomi) => ", nomi,
+			" / ", "denomi => ", denomi,
+			" / ", "a0 => ", a0, " / ", "x0 => ", x0, " / "),
+	
+	print("t0 => ", t0),
+
+
+	/* a1	*/
+	print("------ a1 ---------"),
+	
+	f1: diff(fn,x),
+	nomi: subst(0,x,f1),
+	denomi: factorial(1),
+	a1: float(nomi/denomi),
+	
+	x1: val,
+	
+	t1: a1*x1,
+	
+	print("f1 => ", f1, " / ", "f1(0)(nomi) => ", nomi,
+			" / ", "denomi => ", denomi,
+			" / ", "a1 => ", a1, " / ", "x1 => ", x1, " / "),
+	
+	print("t1 => ", t1)
+
+	/* a2	*/
+	print("------ a2 ---------"),
+	
+	f2: diff(f1,x),
+	nomi: subst(0,x,f2),
+	denomi: factorial(2),
+	a2: float(nomi/denomi),
+	
+	x2: val,
+	
+	t2: a2*x2,
+	
+	print("f2 => ", f2, " / ", "f2(0)(nomi) => ", nomi,
+			" / ", "denomi => ", denomi,
+			" / ", "a2 => ", a2, " / ", "x2 => ", x2, " / "),
+	
+	print("t2 => ", t2)
+
+);
+
+
