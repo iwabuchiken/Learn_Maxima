@@ -85,9 +85,38 @@ taylor_nth(fn,x,n):= (
 );
 
 /************************
+f4,x,3
+************************/
+get_taylor_term(fn,x,val,n,sum_):=(
+
+	fn_d: diff(fn,x),
+	nomi: subst(0,x,fn_d),
+	denomi: factorial(n+1),
+	a: float(nomi/denomi),
+	
+	x: val^(n+1),
+	
+	t: a*x,
+	
+	sum_: sum_ + t,
+	
+	print("fn_d => ", fn_d, " / ", "fn_d(0)(nomi) => ", nomi,
+			" / ", "denomi => ", denomi,
+			" / ", "a => ", a, " / ", "val => ", val, " / ", "x => ", x),
+	
+	print("t => ", t, " / ", "sum => ", sum_)
+
+);
+
+/************************
 taylor_sum
 ************************/
 taylor_sum(fn,x,n, val):=(
+
+	/****************
+		setup
+	****************/
+	sum_: 0,
 
 	print("taylor_sum"),
 
@@ -111,12 +140,14 @@ taylor_sum(fn,x,n, val):=(
 	x0: val,
 	
 	t0: a0*x0,
+	
+	sum_: sum_ + t0,
 
 	print("f0 => ", f0, " / ", "f0(0)(nomi) => ", nomi,
 			" / ", "denomi => ", denomi,
 			" / ", "a0 => ", a0, " / ", "x0 => ", x0, " / "),
 	
-	print("t0 => ", t0),
+	print("t0 => ", t0, " / ", "sum => ", sum_),
 
 
 	/* a1	*/
@@ -131,11 +162,13 @@ taylor_sum(fn,x,n, val):=(
 	
 	t1: a1*x1,
 	
+	sum_: sum_ + t1,
+	
 	print("f1 => ", f1, " / ", "f1(0)(nomi) => ", nomi,
 			" / ", "denomi => ", denomi,
 			" / ", "a1 => ", a1, " / ", "x1 => ", x1, " / "),
 	
-	print("t1 => ", t1)
+	print("t1 => ", t1, " / ", "sum => ", sum_),
 
 	/* a2	*/
 	print("------ a2 ---------"),
@@ -149,11 +182,88 @@ taylor_sum(fn,x,n, val):=(
 	
 	t2: a2*x2,
 	
+	sum_: sum_ + t2,
+	
 	print("f2 => ", f2, " / ", "f2(0)(nomi) => ", nomi,
 			" / ", "denomi => ", denomi,
 			" / ", "a2 => ", a2, " / ", "x2 => ", x2, " / "),
 	
-	print("t2 => ", t2)
+	/*	print("t2 => ", t2),	*/
+	print("t2 => ", t2, " / ", "sum => ", sum_),
+
+	/* a3	*/
+	print("------ a3 ---------"),
+	
+	f3: diff(f2,x),
+	nomi: subst(0,x,f3),
+	denomi: factorial(3),
+	a3: float(nomi/denomi),
+	
+	x3: val,
+	
+	t3: a3*x3,
+	
+	sum_: sum_ + t3,
+	
+	print("f3 => ", f3, " / ", "f3(0)(nomi) => ", nomi,
+			" / ", "denomi => ", denomi,
+			" / ", "a3 => ", a3, " / ", "x3 => ", x3, " / "),
+	
+	print("t3 => ", t3, " / ", "sum => ", sum_),
+
+	/* a4	*/
+	print("------ a4 ---------"),
+	
+	f4: diff(f3,x),
+	nomi: subst(0,x,f4),
+	denomi: factorial(4),
+	a4: float(nomi/denomi),
+	
+	x4: val,
+	
+	t4: a4*x4,
+	
+	sum_: sum_ + t4,
+	
+	print("f4 => ", f4, " / ", "f4(0)(nomi) => ", nomi,
+			" / ", "denomi => ", denomi,
+			" / ", "a4 => ", a4, " / ", "x4 => ", x4, " / "),
+	
+	print("t4 => ", t4, " / ", "sum => ", sum_),
+
+	/* a5	*/
+	print("------ a5 ---------")
+	,
+	n: 3,
+	
+	sum_: get_taylor_term(f4,x,val,n, sum_),
+	
+/*	print("a5 => ", get_taylor_term(f4,x,val,3, sum_))	*/
+	print("a5 => ", sum_)
+	,
+
+	/* a6	*/
+	print("------ a6 ---------")
+	,
+	f: diff(f4,x),
+	n: n+1,
+	
+	sum_: get_taylor_term(f,x,val,n, sum_)
+	,
+	
+	print("a6 => ", sum_)
+		
+	/* a7	*/
+	print("------ a7 ---------")
+	,
+	f: diff(f4,x),
+	n: n+1,
+	
+	sum_: get_taylor_term(f,x,val,n, sum_)
+	,
+	
+	print("a7 => ", sum_)
+		
 
 );
 
