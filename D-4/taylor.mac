@@ -109,6 +109,49 @@ get_taylor_term(fn,x,val,n,sum_):=(
 );
 
 /************************
+get_taylor_term_2
+************************/
+get_taylor_term_2(fn,x,n,val,sum_):=(
+
+	print("-------- get_taylor_term_2 -----------"),
+	
+	print("fn => ", fn, " / ", "n => ", n),
+
+	fn_d: fn,
+
+/*	for i:1 thru 3 step 1 do	*/ 
+/*	for i:1 thru n step 1 do	*/ 
+	for i:1 thru n step 1 do 
+/*		(print(i,"th diff"),fn_d: diff(fn,x), print("fn_d => ", fn_d)),	*/
+/*		(print(i,"th diff"),fn_d: diff(fn_d,x), print("fn_d => ", fn_d)),	*/
+		(fn_d: diff(fn_d,x)),
+	
+/*	fn_d: diff(fn,x),	*/
+
+	nomi: subst(0,x,fn_d),
+	
+	denomi: factorial(n),
+	
+	a: float(nomi/denomi),
+	
+/*	x: val^(n+1),	*/
+	
+/*	t: a*x,	*/
+	t: a*val,
+	
+	sum_: sum_ + t,
+	
+	print("fn_d => ", fn_d, " / ", "fn_d(0)(nomi) => ", nomi,
+			" / ", "denomi => ", denomi,
+			" / ", "a(nomi/denomi) => ", a, " / ", "val => ", val),
+	
+	print("t(a*val) => ", t, " / ", "sum => ", sum_),
+	
+	sum_
+
+);/*	get_taylor_term_2	*/
+
+/************************
 taylor_sum
 ************************/
 taylor_sum(fn,x,n, val):=(
@@ -126,7 +169,7 @@ taylor_sum(fn,x,n, val):=(
 /*
 	a0: subst(0,x,fn),
 	
-	print("a0 => ", a0),
+	print("a0 => ", a0)
 */
 
 	print("------ a0 ---------"),
@@ -148,7 +191,6 @@ taylor_sum(fn,x,n, val):=(
 			" / ", "a0 => ", a0, " / ", "x0 => ", x0, " / "),
 	
 	print("t0 => ", t0, " / ", "sum => ", sum_),
-
 
 	/* a1	*/
 	print("------ a1 ---------"),
@@ -230,8 +272,8 @@ taylor_sum(fn,x,n, val):=(
 			" / ", "a4 => ", a4, " / ", "x4 => ", x4, " / "),
 	
 	print("t4 => ", t4, " / ", "sum => ", sum_),
-
-	/* a5	*/
+	
+		/* a5	*/
 	print("------ a5 ---------")
 	,
 	n: 3,
@@ -251,8 +293,8 @@ taylor_sum(fn,x,n, val):=(
 	sum_: get_taylor_term(f,x,val,n, sum_)
 	,
 	
-	print("a6 => ", sum_)
-		
+	print("a6 => ", sum_),
+	
 	/* a7	*/
 	print("------ a7 ---------")
 	,
@@ -266,5 +308,43 @@ taylor_sum(fn,x,n, val):=(
 		
 
 );
+
+/************************
+taylor_sum
+************************/
+taylor_sum_2(fn,x,n, val):=(
+
+	/****************
+		setup
+	****************/
+	sum_: 0,
+
+	print("taylor_sum_2"),
+
+	print("yes"),
+	
+	print("fn => ", fn),
+
+	/****************
+		1
+	****************/
+/*	f: diff(f4,x),
+	n: n+1,
+*/	
+
+/*	sum_: get_taylor_term2(f,x,val,n, sum_)	*/
+/*	sum_: get_taylor_term_2(fn,x,n,val,sum_)	*/
+	
+/*	for i:1 thru n step 1 do	*/ 
+	for i:0 thru n step 1 do 
+		(
+			print("---------- ", i, " -------------"),
+			sum_: get_taylor_term_2(fn,x,i,val,sum_),
+			print("")
+		)
+	
+
+);
+
 
 
