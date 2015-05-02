@@ -137,7 +137,8 @@ get_taylor_term_2(fn,x,n,val,sum_):=(
 /*	x: val^(n+1),	*/
 	
 /*	t: a*x,	*/
-	t: a*val,
+/*	t: a*val,	*/
+	t: a*val^n,
 	
 	sum_: sum_ + t,
 	
@@ -326,6 +327,11 @@ taylor_sum_2(fn,x,n, val):=(
 	print("fn => ", fn),
 
 	/****************
+		setup: array
+	****************/
+	array(sums, 1,n),
+
+	/****************
 		1
 	****************/
 /*	f: diff(f4,x),
@@ -340,9 +346,24 @@ taylor_sum_2(fn,x,n, val):=(
 		(
 			print("---------- ", i, " -------------"),
 			sum_: get_taylor_term_2(fn,x,i,val,sum_),
-			print("")
+			print(""),
+			sums[1,i]: sum_
+		),
+
+	target: 0.94898461935559,
+
+	for i:0 thru n step 1 do 
+		(
+			print("---------- ", i, " -------------"),
+			print(
+				"sums[1,", i, "]", " => ", sums[1,i]
+				,
+				"(", float(sums[1,i]/target), ")"
+			
+			)
 		)
-	
+
+/*	sums[1,1]	*/
 
 );
 
