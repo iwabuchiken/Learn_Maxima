@@ -1,4 +1,4 @@
-C:\WORKS\Utils\shortcuts\cake_ifm11\main.stop.bat
+C:\WORKS\Utils\shortcuts\prog_Maxima\main.stop.bat
 
-taskkill /f /im wxmaxima.exe
+REM taskkill /f /im wxmaxima.exe
 

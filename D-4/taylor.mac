@@ -350,7 +350,8 @@ taylor_sum_2(fn,x,n, val):=(
 			sums[1,i]: sum_
 		),
 
-	target: 0.94898461935559,
+	target: subst(val,x,fn),
+/*	target: 0.94898461935559,	*/
 
 	for i:0 thru n step 1 do 
 		(
