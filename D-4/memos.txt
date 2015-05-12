@@ -52,6 +52,14 @@ load("C:/WORKS/WS/Eclipse_Luna/Learn_Maxima/D-4/taylor.mac");
 n:5; taylor_nth(f4, x1, n);
 subst(0,x,cos(x));
 
+load("C:/WORKS/WS/WS_Research/Maxima/D-4/taylor.mac");
+fn: %e^x;
+
+val: 7; n:5; taylor_sum_2(fn,x,n, val)
+
+n:5; taylor_nth(fn, x, n);
+subst(0,x,cos(x));
+
 [php]
 php C:\WORKS\WS\Eclipse_Luna\Learn_Maxima\D-4\util.php
 
